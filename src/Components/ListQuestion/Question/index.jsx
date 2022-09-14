@@ -1,14 +1,15 @@
-
+import style from './Question.module.css'
 export default function Question(props) {
 
     return (
-        <li>
-            <p>{props.category}</p>
-            <p>{props.difficulty}</p>
-            <p>{props.question}</p>
-            <ul>
-                <li>{props.correct_answer}</li>
-                {props.incorrect_answers.map((alternativa,index) => <li key={index}>{alternativa}</li> )}
+        <li className={style.item}>
+            <div className={style.item__info}>
+                <span>{props.category}</span>
+                <span>Difficulty: {props.difficulty}</span>
+            </div>
+                 <p className={style.item__question}>{props.question}</p>
+            <ul className={style.item__answers}>
+                {props.answers.sort().map((alternativa, index) => <li className={style.answers} key={index}>{alternativa}</li>)}
             </ul>
         </li>
     )
