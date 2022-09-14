@@ -33,3 +33,9 @@
     border-top: 1px solid white;
     list-style-type: lower-alpha;
 }
+.answers{
+    margin-bottom: .5rem;
+}
+.answers:last-child{
+    margin-bottom: 0;
+}
