@@ -1,0 +1,38 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+form label {
+    font-size: 1.5rem;
+}
+
+form input {
+    border-radius: 8px;
+    color: black;
+    text-align: center;
+    outline: none;
+    padding: 8px;
+    width: 90px;
+}
+form input::-webkit-inner-spin-button,form input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.relatorio {
+    background-color: orange;
+    color: white;
+    align-self: flex-end;
+    margin-right: 2rem;
+}
+
+.botao{
+    border-radius: 8px;
+    width: 150px;
+    border: none;
+    padding: 8px 0;
+    font-weight: 700;
+}

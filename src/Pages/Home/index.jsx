@@ -1,13 +1,20 @@
+import './Home.css'
+// import Form from './Form/index'
+// import Question from '../../Components/ListQuestion/Question'
+import ListQuestion from '../../Components/ListQuestion'
+function Home() {
 
-function App() {
   
   return (
-    <form>
-      <label htmlFor="quantidade">Informe a quantidade</label>
-      <input pattern="^\d+$" type="number" name="quantidade" id="quantidade" />
-      <button type="button">Submit</button>
-    </form>
+    <div className="container">
+      {/* <header>
+        <h1>Projeto desafiador</h1>
+      </header>
+      <Form/>
+      <button className='botao' type="button" >relatorio</button> */}
+      <ListQuestion/>
+    </div>
   )
 }
 
-export default App
+export default Home
