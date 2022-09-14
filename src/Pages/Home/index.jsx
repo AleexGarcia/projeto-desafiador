@@ -1,18 +1,18 @@
 import './Home.css'
-// import Form from './Form/index'
+import Form from './Form/index'
 // import Question from '../../Components/ListQuestion/Question'
-import ListQuestion from '../../Components/ListQuestion'
+// import ListQuestion from '../../Components/ListQuestion'
 function Home() {
 
   
   return (
     <div className="container">
-      {/* <header>
+      <header>
         <h1>Projeto desafiador</h1>
       </header>
       <Form/>
-      <button className='botao' type="button" >relatorio</button> */}
-      <ListQuestion/>
+      <button className='botao' type="button" >relatorio</button> 
+      
     </div>
   )
 }

@@ -1,0 +1,5 @@
+.taskContainer{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto auto auto;
+}

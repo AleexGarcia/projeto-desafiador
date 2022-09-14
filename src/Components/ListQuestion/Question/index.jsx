@@ -7,9 +7,16 @@ export default function Question(props) {
                 <span>{props.category}</span>
                 <span>Difficulty: {props.difficulty}</span>
             </div>
-                 <p className={style.item__question}>{props.question}</p>
-            <ul className={style.item__answers}>
-                {props.answers.sort().map((alternativa, index) => <li className={style.answers} key={index}>{alternativa}</li>)}
+            <p className={style.item__question}>{props.question}</p>
+            <ul
+                className={style.item__answers}
+                onClick={e => console.log(e.target.textContent)}
+            >
+                {props.answers.sort().map((alternativa, index) =>
+                    <li className={style.answers} key={index}>
+                        <input type="radio" name={`Question: ${props.id}`} id={`Question:${props.id}altenativa:${index}`} />
+                        <label htmlFor={`Question:${props.id}altenativa:${index}`}>{alternativa}</label>
+                    </li>)}
             </ul>
         </li>
     )
