@@ -15,7 +15,7 @@ form input {
     text-align: center;
     outline: none;
     padding: 8px;
-    width: 90px;
+    width: 80px;
 }
 form input::-webkit-inner-spin-button,form input::-webkit-outer-spin-button{
     -webkit-appearance: none;
@@ -31,8 +31,11 @@ form input::-webkit-inner-spin-button,form input::-webkit-outer-spin-button{
 
 .botao{
     border-radius: 8px;
-    width: 150px;
+    width: 120px;
     border: none;
     padding: 8px 0;
     font-weight: 700;
+}
+.botao{
+    cursor: pointer;
 }

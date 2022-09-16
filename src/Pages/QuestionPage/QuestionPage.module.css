@@ -2,14 +2,13 @@
     padding: 2rem;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: flex-start;
     justify-content: center;
 }
 
 .taskContainer{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: auto auto auto;
+    display: flex;
+    flex-direction: column;
 }
 .controlesContainer{
     display: flex;
@@ -18,30 +17,7 @@
     padding: 1rem;
     border: 1px solid white;
 }
-.controlesContainer .anterior,.controlesContainer .proxima{
-    border-radius: 8px;
-    padding: 8px;
-    border: none;
-}
-.controlesContainer .anterior:hover,.controlesContainer .proxima:hover{
-    cursor: pointer;
-    color: red;
-}
-.anterior{
-    margin-right: 1rem;
-}
-.controlesContainer .confirmar{
-    background-color: green;
-    color: white;
-    border-radius: 8px;
-    padding: 8px;
-    border: none;
-    
-}
-.controlesContainer .confirmar:hover{
-    cursor: pointer;
-    color: goldenrod;
-}
+
 
 .questionList{
     display: grid;

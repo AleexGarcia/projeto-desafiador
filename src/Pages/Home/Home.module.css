@@ -33,3 +33,13 @@ header h1 {
     text-align: center;
 
 }
+.botao{
+    border-radius: 8px;
+    width: 150px;
+    border: none;
+    padding: 8px 0;
+    font-weight: 700;
+}
+.botao:hover{
+    cursor: pointer;
+}

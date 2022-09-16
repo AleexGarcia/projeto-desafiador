@@ -1,7 +1,7 @@
-import Question from "../../Components/ListQuestion/Question"
+import Question from "./Question"
 import React, { useState, useEffect } from "react";
 import styles from "./QuestionPage.module.css"
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function QuestionPage() {
 
@@ -14,7 +14,6 @@ export default function QuestionPage() {
                 const response = await fetch(`https://opentdb.com/api.php?amount=${quantidade}`);
                 const data = await response.json();
                 const dataResults = data.results;
-
                 dataResults.map(element => {
                     let newQuestion = {
                         category: element.category,
@@ -39,32 +38,32 @@ export default function QuestionPage() {
         <section className={styles.questionPage}>
             <div>
                 <div className={styles.taskContainer}>
-                { 
-                    <Question
-                        category={questions[1].category}
-                        difficulty={questions[1].difficulty}
-                        question={questions[1].question}
-                        answers={questions[1].answers}
-                    />
-                } 
+                    {questions.map((question, index) => (
+                        <Question
+                            key={index}
+                            id={index}
+                            category={question.category}
+                            difficulty={question.difficulty}
+                            question={question.question}
+                            answers={question.answers}
+                        />
+                    ))
+                    }
                 </div>
-                <div className={styles.controlesContainer}>
-                    <button className={styles.confirmar}>Confirmar</button>
-                    <div>
-                        <button className={styles.anterior}>Anterior</button>
-                        <button className={styles.proxima}>Próxima</button>
-                    </div>
-                </div>
+
             </div>
 
             <div className={styles.infoContainer}>
                 <ul className={styles.questionList}>
-                    <li>
-                        <a href="">1</a>
-                    </li>
+                    {
+                        questions.map((element, index) => {
+                            return <li onClick={e => console.log(e)} key={index}><Link to={element}>{index + 1}</Link></li>
+                        })
+                    }
+
                 </ul>
                 <div className={styles.relatorioContainer}>
-                    <span>Contador: 1 / 1</span>
+                    <span>Contador: 0 / {questions.length}</span>
                 </div>
             </div>
         </section>
