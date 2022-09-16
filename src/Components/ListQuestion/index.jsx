@@ -6,7 +6,7 @@ export default function ListQuestion() {
 
     return (
         <div>
-            {dataResults.map((e, index) => {
+            {.map((e, index) => {
                 <button
                     type='button'
                 >{index + 1}</button>

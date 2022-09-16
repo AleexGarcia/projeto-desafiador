@@ -10,7 +10,6 @@ export default function Question(props) {
             <p className={style.item__question}>{props.question}</p>
             <ul
                 className={style.item__answers}
-                onClick={e => console.log(e.target.textContent)}
             >
                 {props.answers.sort().map((alternativa, index) =>
                     <li className={style.answers} key={index}>

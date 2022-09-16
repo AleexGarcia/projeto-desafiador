@@ -1,4 +1,4 @@
-import './Form.css'
+import styles from './Form.module.css'
 export default function Form(){
     
     const onSubmit = (e) => {
@@ -11,7 +11,7 @@ export default function Form(){
         <form onSubmit={onSubmit}>
             <label htmlFor="quantidade">Informe a quantidade</label>
             <input pattern="^\d+$" type="number" name="quantidade" id="quantidade" />
-            <button className='botao' type="submit" >Enviar</button>
+            <button className={styles.botao} type="submit" >Enviar</button>
         </form>
     )
 }
