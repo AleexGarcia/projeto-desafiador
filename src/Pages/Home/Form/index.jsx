@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './Form.module.css'
-export default function Form(){
-    
+export default function Form() {
+    const navigate = useNavigate()
     const onSubmit = (e) => {
         e.preventDefault();
         const quantidade = parseInt(e.target.elements.quantidade.value);
-        redicionaParaStartCancel(quantidade);
-      }
+        navigate(`start/${quantidade}`)
+    }
+
 
     return (
         <form onSubmit={onSubmit}>

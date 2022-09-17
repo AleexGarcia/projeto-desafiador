@@ -7,8 +7,8 @@ export default function AppRouter() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="inicio" element={<StartCancel/>}/>
-                <Route path="questionpage/:id" element={<QuestionPage/>}/>
+                <Route path="start/:quantidade" element={<StartCancel/>}/>
+                <Route path="start/:quantidade/questionpage" element={<QuestionPage/>}/>
             </Routes>
         </Router>
 

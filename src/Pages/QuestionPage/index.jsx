@@ -1,12 +1,21 @@
 import Question from "./Question"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./QuestionPage.module.css"
-import { Link } from 'react-router-dom';
+import {useParams}from 'react-router-dom'
+
 
 export default function QuestionPage() {
-
     const [questions, setQuestions] = useState([]);
-    var quantidade = 5;
+    const [numAcertos, setNumAcertos] = useState(0);
+    
+    function atualizaContador(){
+        setNumAcertos(prevState => prevState + 1)
+    }
+    function atualizaLista(){
+
+    }
+
+    const {quantidade} = useParams();
     useEffect(() => {
 
         async function recebeQuestoes() {
@@ -22,6 +31,7 @@ export default function QuestionPage() {
                         correct_answer: element.correct_answer,
                         incorrect_answers: element.incorrect_answers,
                         answers: element.incorrect_answers.concat(element.correct_answer)
+
                     }
                     setQuestions(prevState => [...prevState, newQuestion])
                 });
@@ -38,6 +48,7 @@ export default function QuestionPage() {
         <section className={styles.questionPage}>
             <div>
                 <div className={styles.taskContainer}>
+
                     {questions.map((question, index) => (
                         <Question
                             key={index}
@@ -46,9 +57,14 @@ export default function QuestionPage() {
                             difficulty={question.difficulty}
                             question={question.question}
                             answers={question.answers}
+                            correct_answer={question.correct_answer}
+                            incorrect_answers={question.incorrect_answers}
+                            atualizaContador = {atualizaContador}
                         />
                     ))
                     }
+
+
                 </div>
 
             </div>
@@ -57,13 +73,13 @@ export default function QuestionPage() {
                 <ul className={styles.questionList}>
                     {
                         questions.map((element, index) => {
-                            return <li onClick={e => console.log(e)} key={index}><Link to={element}>{index + 1}</Link></li>
+                            return <li onClick={e => console.log(e)} key={index}><span>{index + 1}</span></li>
                         })
                     }
 
                 </ul>
                 <div className={styles.relatorioContainer}>
-                    <span>Contador: 0 / {questions.length}</span>
+                    <span>Contador:<span >{numAcertos}</span> / {questions.length}</span>
                 </div>
             </div>
         </section>
