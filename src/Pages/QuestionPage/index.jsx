@@ -1,5 +1,6 @@
 import Question from "./Question"
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import {useForm} from 'react-hook-form'
 import styles from "./QuestionPage.module.css"
 import { useParams } from 'react-router-dom'
 
@@ -7,12 +8,18 @@ import { useParams } from 'react-router-dom'
 export default function QuestionPage() {
     const [questions, setQuestions] = useState([]);
     const [numAcertos, setNumAcertos] = useState(0);
+    const {register, handleSubmit} = useForm();
+   
 
     function atualizaContador() {
         setNumAcertos(prevState => prevState + 1)
     }
     function atualizaLista() {
-
+        
+    }
+    const onSubmit = (e) => {
+       let relatorio = questions.concat(e);
+       
     }
 
     const { quantidade } = useParams();
@@ -46,7 +53,7 @@ export default function QuestionPage() {
 
     return (
         <section >
-            <form action="submit" className={styles.questionPage}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.questionPage}>
                
                 <div>
                     <div className={styles.taskContainer}>
@@ -62,6 +69,7 @@ export default function QuestionPage() {
                                 correct_answer={question.correct_answer}
                                 incorrect_answers={question.incorrect_answers}
                                 atualizaContador={atualizaContador}
+                                register = {register}
                             />
                         ))
                         }
@@ -73,7 +81,7 @@ export default function QuestionPage() {
                     <ul className={styles.questionList}>
                         {
                             questions.map((element, index) => {
-                                return <li onClick={e => console.log(e)} key={index}><span>{index + 1}</span></li>
+                                return <li key={index}><span>{index + 1}</span></li>
                             })
                         }
 
