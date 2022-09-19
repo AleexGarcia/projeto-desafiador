@@ -17,19 +17,21 @@ export default function QuestionPage() {
     function atualizaLista() {
 
     }
-    const onSubmit = (e) => {
-        
+    const onSubmit = (inputsValue) => {
+        console.log(inputsValue)
 
        let bancoDeQuestoes = questions.map((question, index) => {
                 let questoes = {
                     question: question.question,
                     correct_answer: question.correct_answer,
+                    resultado: 
+                    question.correct_answer == inputsValue.questao[index] ? 'Acertou' : 'Errou'
                 }
                 return questoes
             })
-        let respostas = e;
-
-        navigate('../../../relatorio', { state:{bancoDeQuestoes,numAcertos,respostas} , replace: true })
+        let respostas = inputsValue;
+         
+         navigate('../../../relatorio', { state:{bancoDeQuestoes,respostas} , replace: true })
     }
 
     const { quantidade } = useParams();
@@ -79,7 +81,7 @@ export default function QuestionPage() {
                                 correct_answer={question.correct_answer}
                                 incorrect_answers={question.incorrect_answers}
                                 atualizaContador={atualizaContador}
-                                register={register}
+                                register = {register}
                             />
                         ))
                         }

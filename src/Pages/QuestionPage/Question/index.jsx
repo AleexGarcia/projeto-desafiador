@@ -17,12 +17,13 @@ export default function Question(props) {
                 {props.answers.sort().map((alternativa, index) =>
                     <li className={style.answers} key={index} >
                         <input
-                            
-                            value={alternativa} type="radio"
-                            {...props.register(`respostas.${props.id}`)}
-                            name={`question_${props.id + 1}`} id={`${props.id}_${index}`}
+                            value={alternativa} 
+                            type="radio"
+                            {...props.register(`questao.${props.id}`)}
+                            name={`questao.${props.id}`}
+                            id={`${props.id}_${index}`}
                         />
-                        <label htmlFor={`${props.id}:${index}`}>{alternativa}</label>
+                        <label htmlFor={`${props.id}_${index}`}>{alternativa}</label>
                     </li>)}
             </ul>
             <button
