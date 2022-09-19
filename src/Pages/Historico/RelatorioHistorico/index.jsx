@@ -1,22 +1,15 @@
 import { useParams, useLocation } from 'react-router-dom'
-import React, { useState, useContext } from "react";
-import MyContext from '../../../contexts/myContext';
+import React, { useContext } from 'react'
+import MyContext from '../../../contexts/myContext.js'
 
 
 
-export default function Relatorio() {
 
-    let relatorioDados = useLocation().state;
-    let vetorDados = [relatorioDados];
+
+export default function RelatorioHistorico() {
     const [relatoriosGuardados, setRelatoriosGuardados] = useContext(MyContext);
-
-    if (relatoriosGuardados != '') {
-
-        localStorage.setItem("relatorios", JSON.stringify((relatoriosGuardados.concat(vetorDados))));
-
-    } else {
-        localStorage.setItem("relatorios", JSON.stringify(vetorDados));
-    }
+    let posicao = useParams().id;
+   let relatorioDados = relatoriosGuardados[posicao];
 
     let numAcertos = 0;
 

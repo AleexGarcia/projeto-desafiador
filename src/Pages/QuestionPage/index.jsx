@@ -14,13 +14,11 @@ export default function QuestionPage() {
     function atualizaContador() {
         setNumAcertos(prevState => prevState + 1)
     }
-    function atualizaLista() {
-
-    }
+   
     const onSubmit = (inputsValue) => {
-        console.log(inputsValue)
-
-       let bancoDeQuestoes = questions.map((question, index) => {
+        
+        if (inputsValue.questao.every(element => element != null)) {
+            let bancoDeQuestoes = questions.map((question, index) => {
                 let questoes = {
                     question: question.question,
                     correct_answer: question.correct_answer,
@@ -28,9 +26,14 @@ export default function QuestionPage() {
                 }
                 return questoes
             })
-        let respostas = inputsValue;
-         
-         navigate('../../../relatorio', { state:{bancoDeQuestoes,respostas} , replace: true })
+            let respostas = inputsValue;
+            navigate('../../../relatorio', { state: { bancoDeQuestoes, respostas }, replace: true })
+        }else{
+
+            console.log('responda todas as perguntas');
+        }
+
+
     }
 
     const { quantidade } = useParams();
@@ -80,7 +83,7 @@ export default function QuestionPage() {
                                 correct_answer={question.correct_answer}
                                 incorrect_answers={question.incorrect_answers}
                                 atualizaContador={atualizaContador}
-                                register = {register}
+                                register={register}
                             />
                         ))
                         }
