@@ -5,12 +5,14 @@ export default function Form() {
     const onSubmit = (e) => {
         e.preventDefault();
         const quantidade = parseInt(e.target.elements.quantidade.value);
-        navigate(`start/${quantidade}`)
+        if(!isNaN(quantidade)){
+            navigate(`start/${quantidade}`)
+        }
     }
 
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className={styles.form} onSubmit={onSubmit}>
             <label htmlFor="quantidade">Informe a quantidade</label>
             <input pattern="^\d+$" type="number" name="quantidade" id="quantidade" />
             <button className={styles.botao} type="submit" >Enviar</button>

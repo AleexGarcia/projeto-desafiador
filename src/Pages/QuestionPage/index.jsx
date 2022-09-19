@@ -10,7 +10,7 @@ export default function QuestionPage() {
     const [numAcertos, setNumAcertos] = useState(0);
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
-
+    const [mensagem, setMensagem] = useState('');
     function atualizaContador() {
         setNumAcertos(prevState => prevState + 1)
     }
@@ -29,8 +29,8 @@ export default function QuestionPage() {
             let respostas = inputsValue;
             navigate('../../../relatorio', { state: { bancoDeQuestoes, respostas }, replace: true })
         }else{
-
-            console.log('responda todas as perguntas');
+            
+            setMensagem ('Deve responder todas as questões');
         }
 
 
@@ -44,18 +44,18 @@ export default function QuestionPage() {
                 const response = await fetch(`https://opentdb.com/api.php?amount=${quantidade}`);
                 const data = await response.json();
                 const dataResults = data.results;
-                dataResults.map(element => {
-                    let newQuestion = {
+                setQuestions(dataResults.map(element => {
+                    let newQuestion;
+                    return  newQuestion = {
                         category: element.category,
                         difficulty: element.difficulty,
-                        question: element.question.replace('&#039;', '\''),
+                        question: element.question,
                         correct_answer: element.correct_answer,
                         incorrect_answers: element.incorrect_answers,
                         answers: element.incorrect_answers.concat(element.correct_answer)
 
-                    }
-                    setQuestions(prevState => [...prevState, newQuestion])
-                });
+                    }                    
+                }))
             } catch (error) {
                 console.log(error);
             }
@@ -88,7 +88,11 @@ export default function QuestionPage() {
                         ))
                         }
                     </div>
-                    <button type="submit">Finalizar</button>
+                    <button 
+                    className={styles.botao}
+                     type="submit">Finalizar</button>
+                     
+                     <span className={styles.mensagem}>{mensagem}</span>
                 </div>
 
                 <div className={styles.infoContainer}>

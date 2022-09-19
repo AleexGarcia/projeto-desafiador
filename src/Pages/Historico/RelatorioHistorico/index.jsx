@@ -1,16 +1,13 @@
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation,useNavigate } from 'react-router-dom'
 import React, { useContext } from 'react'
 import MyContext from '../../../contexts/myContext.js'
-
-
-
-
+import styles from './RelatorioHistorico.module.css'
 
 export default function RelatorioHistorico() {
     const [relatoriosGuardados, setRelatoriosGuardados] = useContext(MyContext);
     let posicao = useParams().id;
-   let relatorioDados = relatoriosGuardados[posicao];
-
+    let relatorioDados = relatoriosGuardados[posicao];
+    let navigate = useNavigate();
     let numAcertos = 0;
 
     relatorioDados.bancoDeQuestoes.forEach((questao) => {
@@ -20,11 +17,14 @@ export default function RelatorioHistorico() {
     })
 
     return (
-        <div>
-            <div>
+        <section className={styles.container}>
+            <div >
                 <span>n° de acertos = {numAcertos} / {relatorioDados.bancoDeQuestoes.length}</span>
+                <button 
+                onClick={()=> navigate(-1)}
+                className={styles.botao}>Voltar</button>
             </div>
-            <ul>
+            <ul className={styles.list}>
                 {relatorioDados.bancoDeQuestoes.map((question, index) => (
                     <li key={index}>
                         <p>{index + 1}. {question.question}</p>
@@ -34,6 +34,6 @@ export default function RelatorioHistorico() {
                     </li>
                 ))}
             </ul>
-        </div>
+        </section>
     )
 }

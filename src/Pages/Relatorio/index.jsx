@@ -1,11 +1,11 @@
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import React, { useState, useContext } from "react";
 import MyContext from '../../contexts/myContext';
-
+import styles from './Relatorio.module.css'
 
 
 export default function Relatorio() {
-
+    let navigate = useNavigate();
     let relatorioDados = useLocation().state;
     let vetorDados = [relatorioDados];
     const [relatoriosGuardados, setRelatoriosGuardados] = useContext(MyContext);
@@ -27,11 +27,19 @@ export default function Relatorio() {
     })
 
     return (
-        <div>
+        <section className={styles.container}>
             <div>
                 <span>n° de acertos = {numAcertos} / {relatorioDados.bancoDeQuestoes.length}</span>
+                <button 
+                onClick={()=> {
+                    navigate('/', {replace: true})
+                    location.reload() 
+                    }}
+                className={styles.botao}>
+                    Pagina Inicial
+                </button>
             </div>
-            <ul>
+            <ul className={styles.list}>
                 {relatorioDados.bancoDeQuestoes.map((question, index) => (
                     <li key={index}>
                         <p>{index + 1}. {question.question}</p>
@@ -41,6 +49,6 @@ export default function Relatorio() {
                     </li>
                 ))}
             </ul>
-        </div>
+        </section>
     )
 }

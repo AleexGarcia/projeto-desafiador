@@ -1,23 +1,29 @@
 import React, { useContext } from 'react'
 import MyContext from '../../contexts/myContext.js'
-import {Link} from 'react-router-dom'
+import styles from './Historico.module.css'
+import { Link,useNavigate } from 'react-router-dom'
 
 export default function Historico() {
     const [relatoriosGuardados, setRelatoriosGuardados] = useContext(MyContext);
-    relatoriosGuardados.map(relatorio =>{
-        console.log(relatorio)
-    })
+    let navigate = useNavigate();
     return (
-        <ul>
-            {relatoriosGuardados.map((relatorio, index) => (
-               
-                <li key={index}>
-                    <Link to={{
-                        pathname: `/historico/${index}`,
-                    }}>Relatorio {index + 1}</Link>
-                </li>
-            ))}
+        <div>
+            <button
+                onClick={() => navigate(-1)}
+                className={styles.botao}
+            >
+                Voltar</button>
+            <ul className={styles.lista}>
+                {relatoriosGuardados.map((relatorio, index) => (
 
-        </ul>
+                    <li key={index}>
+                        <Link className={styles.link} to={{
+                            pathname: `/historico/${index}`,
+                        }}>Relatorio {index + 1}</Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
     )
 }

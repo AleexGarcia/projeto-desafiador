@@ -2,7 +2,7 @@ import styles from './Home.module.css'
 import Form from './Form/index'
 import React, { useContext } from 'react'
 import MyContext from '../../contexts/myContext.js'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
@@ -13,10 +13,12 @@ function Home() {
   let navigate = useNavigate();
   if (relatoriosGuardados != '') {
     button = <button
-      onClick={() => navigate(`/historico`)}
+      onClick={() => {
+        navigate(`/historico`)
+      }}
       className={styles.botao}
       type="button"
-    >relatorio</button>
+    >Relatorios</button>
   }
 
   return (

@@ -1,11 +1,16 @@
 .questionPage{
     padding: 2rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    gap: 1rem;
 }
-
+@media screen and (min-width:1024px){
+    .questionPage{
+        flex-direction: row;
+    }
+}
 .taskContainer{
     display: flex;
     flex-direction: column;
@@ -36,10 +41,33 @@
     align-items: flex-start;
     border-left: 1px solid white;
     padding: .5rem 1rem;
+    order: -1;
 }
 .relatorioContainer{
     align-self: center;
     justify-self: center;
     padding: 1rem 0;
     
+}
+.botao{
+    border-radius: 8px;
+    width: 120px;
+    border: none;
+    padding: 8px 0;
+    font-weight: 700;
+    margin-top: 2rem;
+   
+}
+.botao:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.mensagem{
+    margin-left: 1rem;
+    color: red;
+    text-shadow: 1px 1px black;
+}
+.ocultar{
+    display: none;
 }

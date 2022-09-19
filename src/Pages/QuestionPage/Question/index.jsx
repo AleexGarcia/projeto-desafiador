@@ -1,7 +1,8 @@
 import style from './Question.module.css'
-import React from 'react';
+import React,{useState} from 'react';
 
 export default function Question(props) {
+    const [resultado, setResultado] = useState('')
     return (
 
         <li className={style.item}>
@@ -34,10 +35,12 @@ export default function Question(props) {
                         if (li.firstChild.checked) {
                             if (li.firstChild.value === props.correct_answer) {
                                 props.atualizaContador();
-                                e.target.textContent = 'Acertou';
-
+                                setResultado('Acertou!!!')
+                                e.target.style.display = 'none'
+                                
                             } else {
-                                e.target.textContent = 'Errou';
+                                e.target.style.display = 'none'
+                                setResultado('Errou!!!')
 
                             }
                             ListaRespostas.forEach(li => {
@@ -52,6 +55,7 @@ export default function Question(props) {
                 className={style.confirmar}
             >Confirmar
             </button>
+            <span className={style.mensagem}>{resultado}</span>
         </li>
 
     )
