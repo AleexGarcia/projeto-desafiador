@@ -24,8 +24,7 @@ export default function QuestionPage() {
                 let questoes = {
                     question: question.question,
                     correct_answer: question.correct_answer,
-                    resultado: 
-                    question.correct_answer == inputsValue.questao[index] ? 'Acertou' : 'Errou'
+                    resultado: question.correct_answer == inputsValue.questao[index] ? 'Acertou' : 'Errou'
                 }
                 return questoes
             })
