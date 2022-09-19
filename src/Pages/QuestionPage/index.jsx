@@ -14,9 +14,9 @@ export default function QuestionPage() {
     function atualizaContador() {
         setNumAcertos(prevState => prevState + 1)
     }
-   
+
     const onSubmit = (inputsValue) => {
-        
+
         if (inputsValue.questao.every(element => element != null)) {
             let bancoDeQuestoes = questions.map((question, index) => {
                 let questoes = {
@@ -28,9 +28,9 @@ export default function QuestionPage() {
             })
             let respostas = inputsValue;
             navigate('../../../relatorio', { state: { bancoDeQuestoes, respostas }, replace: true })
-        }else{
-            
-            setMensagem ('Deve responder todas as questões');
+        } else {
+
+            setMensagem('Deve responder todas as questões');
         }
 
 
@@ -46,7 +46,7 @@ export default function QuestionPage() {
                 const dataResults = data.results;
                 setQuestions(dataResults.map(element => {
                     let newQuestion;
-                    return  newQuestion = {
+                    return newQuestion = {
                         category: element.category,
                         difficulty: element.difficulty,
                         question: element.question,
@@ -54,7 +54,7 @@ export default function QuestionPage() {
                         incorrect_answers: element.incorrect_answers,
                         answers: element.incorrect_answers.concat(element.correct_answer)
 
-                    }                    
+                    }
                 }))
             } catch (error) {
                 console.log(error);
@@ -73,6 +73,7 @@ export default function QuestionPage() {
                     <div className={styles.taskContainer}>
 
                         {questions.map((question, index) => (
+
                             <Question
                                 key={index}
                                 id={index}
@@ -88,11 +89,11 @@ export default function QuestionPage() {
                         ))
                         }
                     </div>
-                    <button 
-                    className={styles.botao}
-                     type="submit">Finalizar</button>
-                     
-                     <span className={styles.mensagem}>{mensagem}</span>
+                    <button
+                        className={styles.botao}
+                        type="submit">Finalizar</button>
+
+                    <span className={styles.mensagem}>{mensagem}</span>
                 </div>
 
                 <div className={styles.infoContainer}>

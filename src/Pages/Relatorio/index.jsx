@@ -30,25 +30,27 @@ export default function Relatorio() {
         <section className={styles.container}>
             <div>
                 <span>n° de acertos = {numAcertos} / {relatorioDados.bancoDeQuestoes.length}</span>
-                <button 
-                onClick={()=> {
-                    navigate('/', {replace: true})
-                    location.reload() 
+                <button
+                    onClick={() => {
+                        navigate('/', { replace: true })
+                        location.reload()
                     }}
-                className={styles.botao}>
+                    className={styles.botao}>
                     Pagina Inicial
                 </button>
             </div>
             <ul className={styles.list}>
                 {relatorioDados.bancoDeQuestoes.map((question, index) => (
                     <li key={index}>
-                        <p>{index + 1}. {question.question}</p>
-                        <p>Alternativa correta: {question.correct_answer}</p>
-                        <p>Alternativa escolhida: {relatorioDados.respostas.questao[index]}</p>
+                        <p>{index + 1}. <span dangerouslySetInnerHTML={{ __html: question.question }} /></p>
+                        <p>Alternativa correta: <span dangerouslySetInnerHTML={{ __html: question.correct_answer }} /></p>
+                        <p>Alternativa escolhida: <span dangerouslySetInnerHTML={{ __html: relatorioDados.respostas.questao[index] }} /></p>
                         <p>{question.resultado}</p>
                     </li>
+                    
                 ))}
             </ul>
         </section>
+
     )
 }

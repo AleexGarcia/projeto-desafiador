@@ -1,5 +1,5 @@
 import style from './Question.module.css'
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 export default function Question(props) {
     const [resultado, setResultado] = useState('')
@@ -10,7 +10,9 @@ export default function Question(props) {
                 <span>{props.category}</span>
                 <span>Difficulty: {props.difficulty}</span>
             </div>
-            <p className={style.item__question}>{props.id + 1} - {props.question}</p>
+            <p className={style.item__question}>
+                {props.id + 1} - <span dangerouslySetInnerHTML={{ __html: props.question }} />
+            </p>
 
             <ul
                 className={style.item__answers}
@@ -18,15 +20,18 @@ export default function Question(props) {
                 {props.answers.sort().map((alternativa, index) =>
                     <li className={style.answers} key={index} >
                         <input
-                            value={alternativa} 
+                            value={alternativa}
                             type="radio"
                             {...props.register(`questao.${props.id}`)}
                             name={`questao.${props.id}`}
                             id={`${props.id}_${index}`}
                         />
-                        <label htmlFor={`${props.id}_${index}`}>{alternativa}</label>
+                        <label htmlFor={`${props.id}_${index}`}>
+                            <span dangerouslySetInnerHTML={{ __html: alternativa }} />
+                        </label>
                     </li>)}
             </ul>
+
             <button
                 type='button'
                 onClick={(e) => {
@@ -37,7 +42,7 @@ export default function Question(props) {
                                 props.atualizaContador();
                                 setResultado('Acertou!!!')
                                 e.target.style.display = 'none'
-                                
+
                             } else {
                                 e.target.style.display = 'none'
                                 setResultado('Errou!!!')

@@ -5,7 +5,7 @@ export default function Form() {
     const onSubmit = (e) => {
         e.preventDefault();
         const quantidade = parseInt(e.target.elements.quantidade.value);
-        if(!isNaN(quantidade)){
+        if(!isNaN(quantidade) && quantidade > 0){
             navigate(`start/${quantidade}`)
         }
     }
