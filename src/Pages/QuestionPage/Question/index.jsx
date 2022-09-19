@@ -19,7 +19,7 @@ export default function Question(props) {
                         <input
                             
                             value={alternativa} type="radio"
-                            {...props.register(`question_${props.id + 1}`)}
+                            {...props.register(`respostas.${props.id}`)}
                             name={`question_${props.id + 1}`} id={`${props.id}_${index}`}
                         />
                         <label htmlFor={`${props.id}:${index}`}>{alternativa}</label>

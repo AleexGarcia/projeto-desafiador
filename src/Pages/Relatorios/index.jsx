@@ -1,6 +1,7 @@
 
 
-export default function Relatorio() {
+export default function Relatorios() {
+  
     return(
         <ul>
             <li>
