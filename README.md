@@ -29,7 +29,7 @@ Os usuários devem ser capazes de:
 
 ### Screenshot
 
-![](screenshot.png)
+![](projeto%desafiador.gif)
 
 ### Links
 
